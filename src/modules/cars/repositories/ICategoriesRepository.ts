@@ -1,14 +1,14 @@
-import { Category } from "../model/Category";
+import { Category } from "../entities/Category";
 
 interface ICreateCategoryDTO {
-  name: String;
-  description: String;
+  name: string;
+  description: string;
 }
 
 interface ICategoriesRepository {
-  create({ description, name }: ICreateCategoryDTO): void;
-  findByName(name: string): Category;
-  list(): Category[];
+  findByName(name: string): Promise<Category>;
+  list(): Promise<Category[]>;
+  create({ description, name }: ICreateCategoryDTO): Promise<void>;
 }
 
 export { ICategoriesRepository, ICreateCategoryDTO };
